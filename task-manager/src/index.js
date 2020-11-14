@@ -30,6 +30,15 @@ app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
 });
 
+const Task = require('./models/task');
+
+const main = async () => {
+  const task = await Task.findById('5faf5bb45da4784e9477568a')
+  await task.populate('owner').execPopulate()
+  console.log(task.owner);
+}
+
+main()
 // const pet = {
 //   name:'all'
 // }
